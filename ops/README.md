@@ -93,3 +93,26 @@ php artisan test --filter=DemoCatalogSeederTest
 - Retain versions, watch capacity and backup job health, and restore both database and image objects to staging regularly. Verify image URLs, admin login, counts and stock movements after restore. PRD targets: RPO 24h / RTO 4h, subject to measured restore tests.
 - `products:reconcile-images` checks referenced paths and lists orphans. The scheduler runs it daily with `--delete-orphans`, deleting only unreferenced objects older than one day. Run `php artisan schedule:run` every minute with cron and alert on nonzero exit. Missing objects must be repaired from backup. Database and object-store writes cannot be atomically committed together.
 - Set up HTTPS uptime checks on `/up`, DB connection/backup alerts, 5xx logs and disk usage. Ensure request logs never contain passwords or secrets. Stock-bearing HTML must not be publicly cached with stale values.
+
+## Deploy gratis ke Render (Docker)
+
+Database dan foto produk tetap di Supabase. Render hanya menjalankan container Laravel (PHP 8.2 + Apache + aset Vite) dari `Dockerfile`. Konfigurasi layanan ada di `render.yaml`; skrip start di `ops/docker/entrypoint.sh`.
+
+1. Push repo ke GitHub.
+2. Di Render: **New → Blueprint**, pilih repo ini. Render membaca `render.yaml` dan membuat web service `ekatalog` (plan free, region Singapore).
+3. Isi variabel bertanda `sync: false` di dashboard, dengan nilai yang sama seperti `.env` lokal yang sudah terhubung ke Supabase:
+
+   | Variabel | Isi |
+   |---|---|
+   | `APP_KEY` | Nilai `APP_KEY` dari `.env` (atau `php artisan key:generate --show`). |
+   | `APP_URL` | URL Render, mis. `https://ekatalog.onrender.com` (isi setelah URL diketahui, lalu redeploy). |
+   | `DB_HOST`, `DB_USERNAME`, `DB_PASSWORD` | Host **Session pooler** Supabase (`aws-…pooler.supabase.com`) dan user `postgres.PROJECT_REF`. Jangan pakai host *direct connection* — itu IPv6-only dan tidak bisa dijangkau Render free. |
+   | `SUPABASE_STORAGE_*` | Key, secret, token (jika dipakai), region, endpoint S3, public URL — sama dengan `.env`. |
+
+4. Deploy. Health check memakai `/up`. Buka URL Render, cek katalog, detail produk, tombol WhatsApp, dan login admin.
+
+Catatan:
+- `RUN_MIGRATIONS=false` secara default karena schema Supabase sudah dimigrasikan dari lokal. Set `true` sementara hanya jika ada migration baru dan user DB runtime boleh menjalankan DDL.
+- `TRUSTED_PROXIES=*` wajib di Render agar Laravel mengenali HTTPS dari proxy Render (URL aset dan cookie `secure`).
+- Free plan tidur setelah ±15 menit tanpa trafik; akses pertama setelahnya butuh ±30–60 detik. Disk container tidak permanen; semua foto disimpan di Supabase Storage.
+- Uji image secara lokal: `docker build -t ekatalog .` lalu `docker run --rm -p 8080:8080 --env-file .env -e APP_ENV=production -e APP_DEBUG=false -e APP_URL=http://localhost:8080 ekatalog`.
