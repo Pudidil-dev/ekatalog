@@ -11,12 +11,17 @@ use Illuminate\Http\Request;
 
 class CatalogController extends Controller
 {
-    public function index(Request $request, CatalogQuery $catalog)
+    public function index(Request $request, CatalogQuery $catalog, WhatsAppLinkService $links)
     {
         $filters = $request->validate(['q' => ['nullable', 'string', 'max:100'], 'category' => ['nullable', 'string', 'max:80']]);
         $products = $catalog->published($filters['q'] ?? null, $filters['category'] ?? null)->latest('id')->paginate(24)->withQueryString();
+        $store = StoreSetting::current();
+        $whatsappLinks = $products->getCollection()->mapWithKeys(fn (Product $product) => [$product->id => $links->forProduct($product, $store)]);
 
-        return view('catalog.index', ['products' => $products, 'categories' => Category::orderBy('sort_order')->get(), 'store' => StoreSetting::current()]);
+        return view('catalog.index', [
+            'products' => $products, 'categories' => Category::orderBy('sort_order')->get(),
+            'store' => $store, 'whatsappLinks' => $whatsappLinks,
+        ]);
     }
 
     public function show(Product $product, WhatsAppLinkService $links)

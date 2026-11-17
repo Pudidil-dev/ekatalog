@@ -7,9 +7,18 @@ use App\Models\StoreSetting;
 
 class WhatsAppLinkService
 {
+    public function forStore(StoreSetting $store): ?string
+    {
+        $number = $store->whatsappNumber();
+
+        return $number ? 'https://wa.me/'.$number : null;
+    }
+
     public function forProduct(Product $product, StoreSetting $store): ?string
     {
-        if (! $store->whatsapp_number) {
+        $base = $this->forStore($store);
+
+        if (! $base) {
             return null;
         }
 
@@ -17,6 +26,6 @@ class WhatsAppLinkService
             // Do not derive an outbound link from the untrusted HTTP Host header.
             $product->name, $product->sku, rtrim(config('app.url'), '/').route('catalog.show', $product, false));
 
-        return 'https://wa.me/'.$store->whatsapp_number.'?text='.rawurlencode($message);
+        return $base.'?text='.rawurlencode($message);
     }
 }
