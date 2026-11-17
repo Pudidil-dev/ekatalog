@@ -1,0 +1,14 @@
+@theme {
+    --font-sans: "Nunito Sans", Arial, sans-serif;
+    --color-background: #ffffff;
+    --color-surface: #ffffff;
+    --color-surface-subtle: #f8fafc;
+    --color-blue-soft: #eef5fc;
+    --color-primary: #356fa8;
+    --color-primary-hover: #2c5f91;
+    --color-text-primary: #334155;
+    --color-text-secondary: #526479;
+    --color-border-subtle: #e2e8f0;
+    --color-border-control: #8293a6;
+}
+:root { --content-max: 1200px; --control-height: 48px; }

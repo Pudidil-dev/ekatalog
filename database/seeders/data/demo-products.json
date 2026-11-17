@@ -1,0 +1,220 @@
+[
+    {
+        "category": "ssd",
+        "sku": "DEMO-SSD-A400-480",
+        "name": "Kingston A400 SATA SSD 480GB",
+        "description": "SSD SATA 2,5 inci untuk peningkatan penyimpanan desktop dan laptop yang mendukung SATA.",
+        "specifications": {
+            "capacity_gb": 480,
+            "interface": "SATA III 6 Gb/s",
+            "protocol": "AHCI",
+            "form_factor": "2.5 inci"
+        },
+        "price": 525000,
+        "stock_quantity": 18,
+        "image": {
+            "file": "kingston-a400.jpg",
+            "source_page": "https://www.kingston.com/en/ssd/a400-solid-state-drive",
+            "source_url": "https://media.kingston.com/kingston/key-features/ktc-keyfeatures-ssd-a400-25-3-lg.jpg",
+            "credit": "Kingston Technology",
+            "retrieved_at": "2026-11-11",
+            "sha256": "c98b09131b534e98ad3178fb1c60ece362956f6db69d0e9d4dead71d38585dc7"
+        }
+    },
+    {
+        "category": "ssd",
+        "sku": "DEMO-SSD-NV3-1TB",
+        "name": "Kingston NV3 NVMe SSD 1TB",
+        "description": "SSD M.2 2280 dengan antarmuka PCIe 4.0 x4 untuk sistem yang mendukung NVMe.",
+        "specifications": {
+            "capacity_gb": 1000,
+            "interface": "PCIe 4.0 x4",
+            "protocol": "NVMe",
+            "form_factor": "M.2 2280"
+        },
+        "price": 950000,
+        "stock_quantity": 12,
+        "image": {
+            "file": "kingston-nv3.jpg",
+            "source_page": "https://comlabtech.com/products/kingston-nv3-nvme-pcie-40-internal-ssd-1tb-m2-2280-snv3s1000g",
+            "source_url": "https://media.zid.store/1c01f620-748a-406a-b662-7f22d055402b/b32f1264-6fb7-4ebb-af23-fec1e44dc0de.jpg",
+            "credit": "Kingston / Comlabtech",
+            "retrieved_at": "2026-11-11",
+            "sha256": "ce595db36a1c808e4a3148005b4802503750ee63f06996c6d3ec88a200a308ec"
+        }
+    },
+    {
+        "category": "ram",
+        "sku": "DEMO-RAM-BEAST-D4-16",
+        "name": "Kingston FURY Beast DDR4 16GB 3200MT/s",
+        "description": "Satu modul RAM desktop 16GB dengan heat spreader hitam. Gunakan pada motherboard DDR4 yang kompatibel.",
+        "specifications": {
+            "capacity_gb": 16,
+            "generation": "DDR4",
+            "speed_mt": 3200,
+            "form_factor": "DIMM 288-pin (1 x 16GB)"
+        },
+        "price": 650000,
+        "stock_quantity": 24,
+        "image": {
+            "file": "kingston-fury-beast-ddr4.jpg",
+            "source_page": "https://www.kingston.com/en/memory/gaming/kingston-fury-beast-ddr4-memory",
+            "source_url": "https://media.kingston.com/kingston/product/FURY_Beast_Black_DDR4_2-zm-lg.jpg",
+            "credit": "Kingston Technology",
+            "retrieved_at": "2026-11-11",
+            "sha256": "4037ef429812f99eea20c389b882f93724d006b16b3ac6d9ca3ea4129dac6762"
+        }
+    },
+    {
+        "category": "ram",
+        "sku": "DEMO-RAM-BEAST-D5-16",
+        "name": "Kingston FURY Beast DDR5 16GB 5200MT/s",
+        "description": "Satu modul RAM desktop DDR5, model KF552C40BB-16. Memerlukan motherboard dan prosesor yang mendukung DDR5.",
+        "specifications": {
+            "capacity_gb": 16,
+            "generation": "DDR5",
+            "speed_mt": 5200,
+            "form_factor": "DIMM 288-pin (1 x 16GB)"
+        },
+        "price": 950000,
+        "stock_quantity": 7,
+        "image": {
+            "file": "kingston-fury-beast-ddr5-large.png",
+            "source_page": "https://www.serversdirect.co.uk/p/1701244/kingston-fury-beast-black-16gb-ddr5-5200mhz-dimm-desktop-memory",
+            "source_url": "https://www.serversdirect.co.uk/Images/KF552C40BB-16_1_Supersize.png?v=3",
+            "credit": "Kingston / Servers Direct",
+            "retrieved_at": "2026-11-11",
+            "sha256": "e4c7b6f02a5ff21d0374a72709536acdffa290075eb66192c7e472197a045247"
+        }
+    },
+    {
+        "category": "motherboard",
+        "sku": "DEMO-MB-B550M-VDH",
+        "name": "MSI B550M PRO-VDH WIFI",
+        "description": "Motherboard micro-ATX dengan socket AM4, chipset AMD B550, dan slot memori DDR4.",
+        "specifications": {
+            "socket": "AM4",
+            "chipset": "AMD B550",
+            "form_factor": "Micro-ATX",
+            "memory_type": "DDR4"
+        },
+        "price": 1750000,
+        "stock_quantity": 6,
+        "image": {
+            "file": "msi-b550m-pro-vdh-wifi.webp",
+            "source_page": "https://www.msi.com/Motherboard/B550M-PRO-VDH-WIFI/Gallery",
+            "source_url": "https://storage-asset.msi.com/global/picture/product/product_10_20200618152228_5eeb1634e9295.webp",
+            "credit": "MSI",
+            "retrieved_at": "2026-11-11",
+            "sha256": "be39e3b40dabc7aa4977b47d533df2137055e440b4a6a36854e76914b0cc1e68"
+        }
+    },
+    {
+        "category": "motherboard",
+        "sku": "DEMO-MB-B550-TOMA",
+        "name": "MSI MAG B550 TOMAHAWK",
+        "description": "Motherboard ATX untuk platform AM4 dengan chipset AMD B550 dan dukungan RAM DDR4.",
+        "specifications": {
+            "socket": "AM4",
+            "chipset": "AMD B550",
+            "form_factor": "ATX",
+            "memory_type": "DDR4"
+        },
+        "price": 2450000,
+        "stock_quantity": 3,
+        "image": {
+            "file": "msi-mag-b550-tomahawk.webp",
+            "source_page": "https://www.msi.com/Motherboard/MAG-B550-TOMAHAWK/Gallery",
+            "source_url": "https://storage-asset.msi.com/global/picture/product/product_160938336626fdb6ca106517e76e29ed491af5e8c7.webp",
+            "credit": "MSI",
+            "retrieved_at": "2026-11-11",
+            "sha256": "319e5e1b7765304ab501446ff982df3d8c55fcb9c368a8db5b7b8e9227a9da98"
+        }
+    },
+    {
+        "category": "prosesor",
+        "sku": "DEMO-CPU-R5-5600",
+        "name": "AMD Ryzen 5 5600",
+        "description": "Prosesor desktop Zen 3 dengan 6 core dan 12 thread untuk socket AM4. Memerlukan kartu grafis terpisah.",
+        "specifications": {
+            "socket": "AM4",
+            "cores": 6,
+            "threads": 12,
+            "base_clock_ghz": 3.5
+        },
+        "price": 1650000,
+        "stock_quantity": 10,
+        "image": {
+            "file": "amd-ryzen-5-5600.jpg",
+            "source_page": "https://www.aiuto-jp.co.jp/products/product_5171.php",
+            "source_url": "https://www.aiuto-jp.co.jp/resources/products/5171_b3984cb7cfe0f2eba8c09eb4db8830278022fd87.jpg",
+            "credit": "AMD / aiuto",
+            "retrieved_at": "2026-11-11",
+            "sha256": "c548f9879a53d93e23a5bffe465f84714b09df8b8be48c58f77544cd799fc6df"
+        }
+    },
+    {
+        "category": "prosesor",
+        "sku": "DEMO-CPU-R7-5700X",
+        "name": "AMD Ryzen 7 5700X",
+        "description": "Prosesor desktop Zen 3 dengan 8 core dan 16 thread untuk socket AM4. Memerlukan kartu grafis dan pendingin terpisah.",
+        "specifications": {
+            "socket": "AM4",
+            "cores": 8,
+            "threads": 16,
+            "base_clock_ghz": 3.4
+        },
+        "price": 2550000,
+        "stock_quantity": 4,
+        "image": {
+            "file": "amd-ryzen-7-5700x.jpg",
+            "source_page": "https://vipasa.pe/procesador-amd/8431-procesador-amd-ryzen-7-5700x-340-460ghz-32mb-l3-cache-8-core-am4-7nm-65w.html",
+            "source_url": "https://vipasa.pe/4641-superlarge_default/procesador-amd-ryzen-7-5700x-340-460ghz-32mb-l3-cache-8-core-am4-7nm-65w.jpg",
+            "credit": "AMD / Vipasa",
+            "retrieved_at": "2026-11-11",
+            "sha256": "ea40e8bf2956a3335c58d0242daa0547c77986cfee150de2ff8aa6116150e321"
+        }
+    },
+    {
+        "category": "gpu",
+        "sku": "DEMO-GPU-3060-12",
+        "name": "MSI GeForce RTX 3060 VENTUS 2X 12G OC",
+        "description": "Kartu grafis NVIDIA GeForce RTX 3060 dengan dua kipas dan VRAM GDDR6 12GB. Contoh produk dengan stok habis.",
+        "specifications": {
+            "chipset": "NVIDIA GeForce RTX 3060",
+            "vram_gb": 12,
+            "memory_type": "GDDR6"
+        },
+        "price": 4350000,
+        "stock_quantity": 0,
+        "image": {
+            "file": "msi-rtx-3060-ventus-2x.webp",
+            "source_page": "https://www.msi.com/Graphics-Card/GeForce-RTX-3060-VENTUS-2X-12G-OC/Gallery",
+            "source_url": "https://storage-asset.msi.com/global/picture/product/product_1610443907b48feb29b4a49834f4b19e35c5511db6.webp",
+            "credit": "MSI",
+            "retrieved_at": "2026-11-11",
+            "sha256": "0b52f1800f77b2c7e3654452a19e983adca8cb2cee128c1a06343a6617002f73"
+        }
+    },
+    {
+        "category": "gpu",
+        "sku": "DEMO-GPU-4060-8",
+        "name": "MSI GeForce RTX 4060 VENTUS 2X BLACK 8G OC",
+        "description": "Kartu grafis NVIDIA GeForce RTX 4060 dengan dua kipas dan memori GDDR6 8GB.",
+        "specifications": {
+            "chipset": "NVIDIA GeForce RTX 4060",
+            "vram_gb": 8,
+            "memory_type": "GDDR6"
+        },
+        "price": 4950000,
+        "stock_quantity": 2,
+        "image": {
+            "file": "msi-rtx-4060-ventus-2x.webp",
+            "source_page": "https://www.msi.com/Graphics-Card/GeForce-RTX-4060-VENTUS-2X-BLACK-8G-OC/Gallery",
+            "source_url": "https://storage-asset.msi.com/global/picture/product/product_1689728820bee4166c12b53c656c39ab1b81888843.webp",
+            "credit": "MSI",
+            "retrieved_at": "2026-11-11",
+            "sha256": "c6e5e3c145d8c74ec2b6452202938029f2d1ec1c309f2345df23bb9e0181d038"
+        }
+    }
+]
