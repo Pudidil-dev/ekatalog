@@ -12,15 +12,16 @@ final class CategorySpecifications
         'gpu' => ['chipset' => 'Chipset', 'vram_gb' => 'VRAM (GB)', 'memory_type' => 'Jenis memori'],
     ];
 
-    public static function rules(string $category): array
+    public static function rules(string $category, bool $required = true): array
     {
+        $presence = $required ? 'required' : 'nullable';
         $fields = self::FIELDS[$category] ?? [];
         $numeric = ['capacity_gb', 'speed_mt', 'cores', 'threads', 'vram_gb'];
         $rules = [];
         foreach ($fields as $key => $label) {
             $rules['specifications.'.$key] = in_array($key, $numeric, true)
-                ? ['required', 'integer', 'min:1', 'max:100000']
-                : ($key === 'base_clock_ghz' ? ['required', 'numeric', 'gt:0', 'max:100'] : ['required', 'string', 'max:100']);
+                ? [$presence, 'integer', 'min:1', 'max:100000']
+                : ($key === 'base_clock_ghz' ? [$presence, 'numeric', 'gt:0', 'max:100'] : [$presence, 'string', 'max:100']);
         }
 
         return $rules;

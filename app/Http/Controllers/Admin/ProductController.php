@@ -58,7 +58,7 @@ class ProductController extends Controller
                 'category_id' => $category->id, 'sku' => $data['sku'],
                 'slug' => Str::slug($data['name']).'-'.strtolower(Str::random(7)),
                 'name' => $data['name'], 'description' => $data['description'] ?? null,
-                'specifications' => array_intersect_key($data['specifications'], CategorySpecifications::FIELDS[$category->code]),
+                'specifications' => $this->specifications($data['specifications'] ?? [], $category->code),
                 'price' => $data['price'], 'status' => $data['status'],
             ]);
             $adjust->handle($product, $request->user()->id, (int) $data['initial_stock'], $data['initial_reason'], 0, (string) Str::uuid());
@@ -87,7 +87,8 @@ class ProductController extends Controller
             $locked->fill([
                 'name' => $data['name'], 'sku' => $data['sku'], 'category_id' => $category->id,
                 'description' => $data['description'] ?? null,
-                'specifications' => array_intersect_key($data['specifications'], CategorySpecifications::FIELDS[$category->code]),
+                // Keep saved specifications when the form does not submit any.
+                'specifications' => $this->specifications($data['specifications'] ?? $locked->specifications, $category->code),
                 'price' => $data['price'], 'status' => $data['status'],
             ]);
             $locked->lock_version++;
@@ -95,6 +96,17 @@ class ProductController extends Controller
         });
 
         return back()->with('success', 'Produk berhasil disimpan.');
+    }
+
+    /**
+     * Keep only non-empty fields that belong to the selected category.
+     */
+    private function specifications(array $specifications, string $categoryCode): array
+    {
+        return array_filter(
+            array_intersect_key($specifications, CategorySpecifications::FIELDS[$categoryCode] ?? []),
+            fn ($value) => $value !== null && $value !== '',
+        );
     }
 
     private function requirePublishable(array $data, bool $hasImage): void

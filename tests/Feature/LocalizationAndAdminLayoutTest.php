@@ -101,10 +101,8 @@ class LocalizationAndAdminLayoutTest extends TestCase
         $this->assertReadableErrors();
 
         $this->from('/admin/products/create')->post('/admin/products', [...$payload, 'category_id' => $category->id, 'name' => 'SSD Baru'])
-            ->assertSessionHasErrors([
-                'sku' => 'SKU sudah digunakan.',
-                'specifications.capacity_gb' => 'Kapasitas (GB) wajib diisi.',
-            ]);
+            ->assertSessionHasErrors(['sku' => 'SKU sudah digunakan.'])
+            ->assertSessionDoesntHaveErrors('specifications.capacity_gb');
         $this->assertReadableErrors();
     }
 

@@ -3,7 +3,7 @@
 @section('content')
 <h1>{{ $product->exists ? 'Edit produk' : 'Tambah produk' }}</h1>
 <p>Simpan sebagai draft, lalu terbitkan ketika informasi sudah lengkap.</p>
-<form method="post" action="{{ $product->exists ? route('admin.products.update', $product) : route('admin.products.store') }}" class="product-form" x-data="{ category: '{{ old('category_id', $product->category_id ?? $categories->first()?->id) }}' }">
+<form method="post" action="{{ $product->exists ? route('admin.products.update', $product) : route('admin.products.store') }}" class="product-form">
     @csrf
     @if($product->exists)
         @method('PUT')
@@ -16,23 +16,13 @@
             @error('name')<p id="name-error" class="field-error">{{ $message }}</p>@enderror
             <label>SKU *<input name="sku" required value="{{ old('sku', $product->sku) }}" @error('sku') aria-invalid="true" aria-describedby="sku-error" @enderror></label>
             @error('sku')<p id="sku-error" class="field-error">{{ $message }}</p>@enderror
-            <label>Kategori *<select name="category_id" required x-model="category">
+            <label>Kategori *<select name="category_id" required>
                 @foreach($categories as $category)
                     <option value="{{ $category->id }}" @selected(old('category_id', $product->category_id ?? $categories->first()?->id) == $category->id)>{{ $category->name }}</option>
                 @endforeach
             </select></label>
             <label>Harga (Rp) *<input type="number" min="0" name="price" required value="{{ old('price', $product->price ?? 0) }}"></label>
             <label>Deskripsi<textarea name="description" rows="4">{{ old('description', $product->description) }}</textarea></label>
-        </section>
-        <section class="panel">
-            <h2>Spesifikasi</h2>
-            @foreach($categories as $category)
-                <div x-show="category === '{{ $category->id }}'" class="spec-fields">
-                    @foreach(\App\Support\CategorySpecifications::FIELDS[$category->code] as $key => $label)
-                        <label>{{ $label }} *<input :disabled="category !== '{{ $category->id }}'" name="specifications[{{ $key }}]" value="{{ old('specifications.'.$key, $product->specifications[$key] ?? '') }}"></label>
-                    @endforeach
-                </div>
-            @endforeach
         </section>
     </div>
     <aside class="panel">

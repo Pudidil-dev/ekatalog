@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -15,7 +16,20 @@ class Product extends Model
 
     protected function casts(): array
     {
-        return ['specifications' => 'array', 'stock_quantity' => 'integer', 'lock_version' => 'integer', 'stock_updated_at' => 'datetime'];
+        return ['stock_quantity' => 'integer', 'lock_version' => 'integer', 'stock_updated_at' => 'datetime'];
+    }
+
+    /**
+     * Specifications are optional. They are stored as a JSON object ("{}" when
+     * empty) to satisfy the PostgreSQL products_specs_object constraint, which
+     * a plain array cast would break by writing "[]".
+     */
+    protected function specifications(): Attribute
+    {
+        return Attribute::make(
+            get: fn (?string $value) => $value === null ? [] : (json_decode($value, true) ?: []),
+            set: fn (?array $value) => json_encode((object) ($value ?? []), JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR),
+        );
     }
 
     public function getRouteKeyName(): string

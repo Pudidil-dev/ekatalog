@@ -49,7 +49,7 @@ class ExportController extends Controller
                         $safe = fn ($s) => preg_match('/^[\p{Z}\p{C}]*[=+@\-]/u', (string) $s) ? "'".(string) $s : (string) $s;
                         $writer->addRow(Row::fromValues([
                             $safe($product->sku), $safe($product->name), $safe($product->category->name),
-                            $safe(json_encode($product->specifications, JSON_UNESCAPED_UNICODE)),
+                            $safe($product->specifications ? json_encode($product->specifications, JSON_UNESCAPED_UNICODE) : ''),
                             (int) $product->price, $product->stock_quantity, $product->status,
                             $product->updated_at?->toIso8601String(),
                         ]));

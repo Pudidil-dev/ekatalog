@@ -35,11 +35,12 @@ class SaveProductRequest extends FormRequest
             'description' => ['nullable', 'string', 'max:5000'],
             'price' => ['required', 'integer', 'min:0', 'max:99999999999999'],
             'status' => ['required', Rule::in(['draft', 'published'])],
-            'specifications' => ['required', 'array'],
+            // Specifications are optional; the admin form no longer collects them.
+            'specifications' => ['nullable', 'array'],
             'version' => [$product ? 'required' : 'nullable', 'integer', 'min:0'],
             'initial_stock' => [$product ? 'prohibited' : 'required', 'integer', 'min:0', 'max:2147483647'],
             'initial_reason' => [$product ? 'prohibited' : 'required', 'string', 'min:3', 'max:500'],
-        ], CategorySpecifications::rules($category?->code ?? ''));
+        ], CategorySpecifications::rules($category?->code ?? '', required: false));
     }
 
     /**
