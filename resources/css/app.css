@@ -64,6 +64,7 @@ textarea { resize: vertical; }
 .stock-badge { display: inline-flex; border-radius: 999px; padding: 5px 11px; font-size: 16px; line-height: 1.35; }
 .stock-badge.available { color: #356748; background: #eef7f1; }
 .stock-badge.empty { color: var(--color-text-secondary); background: #f1f5f9; }
+.stock-badge strong { font-weight: 700; margin-inline: 0.25em; }
 .card-actions { display: flex; flex-direction: column; gap: 8px; margin-top: auto; width: 100%; padding-top: 6px; }
 .card-actions .button { width: 100%; white-space: normal; }
 .empty-state { text-align: center; padding: 64px 24px; background: var(--color-surface-subtle); border-radius: 12px; }
